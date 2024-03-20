@@ -47,12 +47,16 @@
 */
 #include "mcc_generated_files/system.h"
 #include "sources/os/os.h"
+#include "PowerController.h"
 
 /*
                          Main application
  */
 int main(void)
 {
+    // initialize VCOMP controller
+    VMC_ControlObject_Initialize();
+    
     // initialize the device
     SYSTEM_Initialize();
     
@@ -66,6 +70,50 @@ int main(void)
     }
     return 1; 
 }
+
+#if 0 // Moved to PowerController.c
+#define SysSwitch_OpenLoop  1
+#define SysConst_PWMPeriod  39992 //100KHz based on 500MHz
+#define SysConst_Shift99p   (SysConst_PWMPeriod /2 * 0.99)
+#define SysConst_Shift30p   (SysConst_PWMPeriod /2 * 0.30)
+#define SysConst_Shift02p   (SysConst_PWMPeriod /2 * 0.02)
+
+uint16_t PWMUpdateCount = 0;
+uint16_t PhaseShifted = SysConst_Shift02p;
+uint16_t SRdelay = 0x320;
+
+
+void __attribute__ ( ( __interrupt__ , auto_psv ) ) _ADCAN0Interrupt ( void )
+{
+    uint16_t valchannel_AN0;
+    //Read the ADC value from the ADCBUF
+    valchannel_AN0 = ADCBUF0;
+
+#if (SysSwitch_OpenLoop == 1)
+    // For PWM Boundary Test
+    if(PWMUpdateCount <= 2)
+    {
+        //0~2
+        PhaseShifted = SysConst_Shift99p;
+        SRdelay = 0x320;
+    }
+    else
+    {
+        //3~5
+        PhaseShifted = SysConst_Shift02p;
+        SRdelay = 0x320;
+    }
+    PG1TRIGA = PhaseShifted;
+    //PG2TRIGA = SRdelay;
+    if(PWMUpdateCount >= 5) PWMUpdateCount = 0;
+    else PWMUpdateCount++;
+#endif
+
+    //clear the channel_AN0 interrupt flag
+    IFS5bits.ADCAN0IF = 0;
+}
+#endif
+
 /**
  End of File
 */

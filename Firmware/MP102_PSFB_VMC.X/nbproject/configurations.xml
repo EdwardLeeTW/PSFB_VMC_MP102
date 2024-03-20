@@ -18,10 +18,29 @@
         <itemPath>mcc_generated_files/traps.h</itemPath>
         <itemPath>mcc_generated_files/system_types.h</itemPath>
         <itemPath>mcc_generated_files/clock.h</itemPath>
+        <itemPath>mcc_generated_files/adc1.h</itemPath>
+        <itemPath>mcc_generated_files/pwm.h</itemPath>
+        <itemPath>mcc_generated_files/pwm_module_features.h</itemPath>
+        <itemPath>mcc_generated_files/adc_module_features.h</itemPath>
       </logicalFolder>
       <logicalFolder name="sources" displayName="sources" projectFiles="true">
         <logicalFolder name="config" displayName="config" projectFiles="true">
           <itemPath>sources/config/os_settings.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="driver" displayName="driver" projectFiles="true">
+          <logicalFolder name="PowerController"
+                         displayName="PowerController"
+                         projectFiles="true">
+            <itemPath>sources/driver/PowerController/PowerController.h</itemPath>
+            <itemPath>sources/driver/PowerController/npnz16b.inc</itemPath>
+            <itemPath>sources/driver/PowerController/npnz16b.h</itemPath>
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="os" displayName="os" projectFiles="true">
+          <itemPath>sources/os/os_timer.h</itemPath>
+          <itemPath>sources/os/os.h</itemPath>
+          <itemPath>sources/os/os_sys_time.h</itemPath>
+          <itemPath>sources/os/os_scheduler.h</itemPath>
         </logicalFolder>
       </logicalFolder>
     </logicalFolder>
@@ -49,10 +68,22 @@
         <itemPath>mcc_generated_files/mcc.c</itemPath>
         <itemPath>mcc_generated_files/clock.c</itemPath>
         <itemPath>mcc_generated_files/reset.c</itemPath>
+        <itemPath>mcc_generated_files/adc1.c</itemPath>
+        <itemPath>mcc_generated_files/pwm.c</itemPath>
       </logicalFolder>
       <logicalFolder name="sources" displayName="sources" projectFiles="true">
+        <logicalFolder name="driver" displayName="driver" projectFiles="true">
+          <logicalFolder name="PowerController"
+                         displayName="PowerController"
+                         projectFiles="true">
+            <itemPath>sources/driver/PowerController/VMC.c</itemPath>
+            <itemPath>sources/driver/PowerController/PowerController.c</itemPath>
+            <itemPath>sources/driver/PowerController/VMC_asm.s</itemPath>
+          </logicalFolder>
+        </logicalFolder>
         <logicalFolder name="os" displayName="os" projectFiles="true">
           <itemPath>sources/os/os_scheduler_100us.c</itemPath>
+          <itemPath>sources/os/os_scheduler_1ms.c</itemPath>
           <itemPath>sources/os/os_sys_time.c</itemPath>
           <itemPath>sources/os/os.c</itemPath>
           <itemPath>sources/os/os_timer.c</itemPath>
@@ -64,6 +95,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>sources</Elem>
+    <Elem>../../../PSFB_CodeBase_OS_Scheduler_MP102/Firmware/MP102_Codebase.X/sources</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -224,7 +256,8 @@
       </C30-LD>
       <C30Global>
         <property key="combine-sourcefiles" value="false"/>
-        <property key="common-include-directories" value=""/>
+        <property key="common-include-directories"
+                  value="sources/driver/PowerController"/>
         <property key="dual-boot-partition" value="0"/>
         <property key="fast-math" value="false"/>
         <property key="generic-16-bit" value="false"/>
@@ -408,7 +441,7 @@
         <property key="memories.programmemory.ranges" value="0-5eff"/>
         <property key="poweroptions.powerenable" value="true"/>
         <property key="programmerToGoFilePath"
-                  value="/Users/edwardlee/GitHub/PSFB_CodeBase_OS_Scheduler_MP102/Firmware/MP102_Codebase.X/debug/default/MP102_Codebase_ptg"/>
+                  value="/Users/edwardlee/GitHub/PSFB_VMC_MP102/Firmware/MP102_PSFB_VMC.X/debug/default/MP102_Codebase_ptg"/>
         <property key="programmerToGoImageName" value="MP102_Codebase_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>

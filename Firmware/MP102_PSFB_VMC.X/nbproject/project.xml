@@ -10,6 +10,7 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>sources</sourceRootElem>
+                <sourceRootElem>../../../PSFB_CodeBase_OS_Scheduler_MP102/Firmware/MP102_Codebase.X/sources</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
