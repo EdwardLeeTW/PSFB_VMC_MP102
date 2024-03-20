@@ -9,11 +9,11 @@
     "Language": 31,
     "Max Height": "5X",
     "Operation Mode": 1,
-    "Sample count": "2048",
-    "Sample rate": "20000000",
+    "Sample count": "5120",
+    "Sample rate": "25000000",
     "Stop Options": 1,
     "Threshold Level": "1",
-    "Title": "DSView v1.3.0",
+    "Title": "DSView v1.3.1",
     "Trigger channel": 0,
     "Trigger hold off": "0",
     "Trigger margin": 8,
@@ -81,7 +81,7 @@
             "colour": "default",
             "enabled": true,
             "index": 6,
-            "name": "TP52",
+            "name": "LED1",
             "strigger": 0,
             "type": 10000,
             "view_index": 6
@@ -90,10 +90,10 @@
             "colour": "default",
             "enabled": true,
             "index": 7,
-            "name": "TP54",
+            "name": "Reserved",
             "strigger": 0,
             "type": 10000,
-            "view_index": 7
+            "view_index": 11
         },
         {
             "colour": "#fc0107",
@@ -102,7 +102,7 @@
             "name": "CLC3",
             "strigger": 0,
             "type": 10000,
-            "view_index": 8
+            "view_index": 7
         },
         {
             "colour": "#0000ff",
@@ -111,7 +111,7 @@
             "name": "CLC1",
             "strigger": 0,
             "type": 10000,
-            "view_index": 9
+            "view_index": 8
         },
         {
             "colour": "#21ff06",
@@ -120,7 +120,7 @@
             "name": "CLC2",
             "strigger": 0,
             "type": 10000,
-            "view_index": 10
+            "view_index": 9
         },
         {
             "colour": "default",
@@ -129,7 +129,7 @@
             "name": "Reserved",
             "strigger": 0,
             "type": 10000,
-            "view_index": 11
+            "view_index": 10
         }
     ],
     "decoder": [
